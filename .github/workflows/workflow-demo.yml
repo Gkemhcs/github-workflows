@@ -8,6 +8,7 @@ jobs:
       runs-on: self-hosted
       steps:
       - name: out
+        id: out
         run: |
            echo "printed" 
            echo "name=gkemhcs" > "$GITHUB_OUTPUT"
