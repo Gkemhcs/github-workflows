@@ -12,7 +12,8 @@ jobs:
         run: |
            echo "printed" 
            echo "name=gkemhcs" > "$GITHUB_OUTPUT"
-            echo "age=20" > "$GITHUB_OUTPUT"
+            echo "age=20" >> "$GITHUB_OUTPUT"
+            echo "$GITHUB_OUTPUT"
 
       - name: print
         run: |
