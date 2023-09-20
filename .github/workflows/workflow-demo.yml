@@ -1,5 +1,5 @@
 name: workflow-1 
-run-name: workflow-1
+run-name: workflow
 on: [push]
 jobs:
     echo-job:
