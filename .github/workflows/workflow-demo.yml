@@ -4,8 +4,12 @@ on: [push]
 jobs:
   
   
-    output-job:
+    input-job:
       runs-on: self-hosted
+      outputs:
+       name: ${{steps.out.outputs.name}}
+       age: ${{steps.out.outputs.age}}
+       greet: ${{steps.greet.outputs.greet}}
       steps:
       - name: out
         id: out
@@ -15,6 +19,14 @@ jobs:
             echo "age=20" >> "$GITHUB_OUTPUT"
             echo "$GITHUB_OUTPUT"
 
-      - name: print
+      - name: greet
         run: |
-            echo "name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}"
+            echo "name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}" 
+            echo "name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}" >> $GITHUB_OUTPUT  
+    output-job:
+      runs-on: self-hosted
+      needs: [input-job]
+      steps:
+      - name: printing
+        run: |
+             echo  "${{toJson(needs.input-job.outputs)}}"
