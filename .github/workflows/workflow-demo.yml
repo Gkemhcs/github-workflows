@@ -6,7 +6,7 @@ jobs:
       runs-on: self-hosted
       steps:
       - run: echo "welcome to  ${{github.actor}} ${{github.workspace}} ${{github.repository}}"
-      - run: echo "${{toJson(github)}}"
+    #  - run: echo "${{toJson(github)}}"
       - run: echo "${{vars.COMPANY_NAME}}"
-      - run: echo "${{secrets.SECRET_CHARACTER}}" > ./output.txt 
-      - run: cat output.txt
+      - run: mkdir  "${{secrets.SECRET_CHARACTER}}" 
+      - run: ls
