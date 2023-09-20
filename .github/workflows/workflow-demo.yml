@@ -1,6 +1,11 @@
 name: workflow-1 
 run-name: workflow
-on: [push]
+on: 
+  push:
+     branches:
+     - main
+     paths-ignore:
+     - .github/**
 jobs:
   
   
