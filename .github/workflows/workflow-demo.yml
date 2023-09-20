@@ -30,4 +30,4 @@ jobs:
       steps:
       - name: printing
         run: |
-             echo  "${{toJson(needs.input-job.outputs}}"
+             echo  "${{toJson(needs.input-job.outputs)}}"
