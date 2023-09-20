@@ -1,0 +1,27 @@
+name: push
+run-name: push-to-repo
+on: 
+   push:
+     paths-ignore:
+     - "**.txt"
+jobs:
+   push:
+     runs-on: self-hosted
+     permissions:
+        contents: write
+     steps:
+     - name: checkout repo 
+       uses: actions/checkout@v2
+     - name: list directory
+       run: ls
+     - name: making some changes 
+       run: |
+          echo "i am appending here $(date) " >> github-actions.txt
+          git config --local user.name Gkemhcs 
+          git config --local user.email gudikotieswarmani@gmail.com 
+          git commit -a -m "file added by github-actions $(date)" 
+     - name: push to repo 
+       uses:  ad-m/github-push-action@master
+       with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
