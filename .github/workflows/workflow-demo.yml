@@ -9,4 +9,8 @@ jobs:
       steps:
       - name: out
         run: |
-           echo "printed"
+           echo "printed" 
+           echo "name=gkemhcs" > "$GITHUB_OUTPUT"
+      - name: print
+        run: |
+            echo "name is ${{steps.out.outputs.name}}"
