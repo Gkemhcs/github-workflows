@@ -9,4 +9,4 @@ jobs:
       - run: echo "${{toJson(github)}}"
       - run: echo "${{vars.COMPANY_NAME}}"
       - run: echo "${{secrets.SECRET_CHARACTER}} > ./output.txt "
-      - run: cat ./output.txt 
+      - run: ls
