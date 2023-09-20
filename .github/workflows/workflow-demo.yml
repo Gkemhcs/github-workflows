@@ -1,0 +1,9 @@
+name: workflow-1 
+run-name: workflow-1
+on: [push]
+jobs:
+    echo-job:
+      runs-on: self-hosted
+      steps:
+      - run: echo "welcome to  ${{github.actor}} ${{github.workspace}} ${{github.repository}}"
+      - run: echo "${{toJson(github)}}"
