@@ -17,9 +17,11 @@ jobs:
      - name: making some changes 
        run: |
           echo "i am appending here $(date) " >> github-actions.txt
+          git checkout main
           git config --local user.name Gkemhcs 
           git config --local user.email gudikotieswarmani@gmail.com 
-          git commit -a -m "file added by github-actions $(date)" 
+          git add .
+          git commit  -m "file added by github-actions $(date)" 
      - name: push to repo 
        uses:  ad-m/github-push-action@master
        with:
