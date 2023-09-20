@@ -8,5 +8,5 @@ jobs:
       - run: echo "welcome to  ${{github.actor}} ${{github.workspace}} ${{github.repository}}"
       - run: echo "${{toJson(github)}}"
       - run: echo "${{vars.COMPANY_NAME}}"
-      - run: echo "${{secrets.SECRET_CHARACTER}} > output.txt "
-      - run: cat output.txt 
+      - run: echo "${{secrets.SECRET_CHARACTER}} > ./output.txt "
+      - run: cat ./output.txt 
