@@ -2,11 +2,11 @@ name: workflow-1
 run-name: workflow
 on: [push]
 jobs:
-    echo-job:
+  
+  
+    output-job:
       runs-on: self-hosted
       steps:
-      - run: echo "welcome to  ${{github.actor}} ${{github.workspace}} ${{github.repository}}"
-    #  - run: echo "${{toJson(github)}}"
-      - run: echo "${{vars.COMPANY_NAME}}"
-      - run: mkdir  "${{secrets.SECRET_CHARACTER}}" 
-      - run: ls
+      - name: out
+        run: |
+           echo "printed"
