@@ -7,3 +7,4 @@ jobs:
       steps:
       - run: echo "welcome to  ${{github.actor}} ${{github.workspace}} ${{github.repository}}"
       - run: echo "${{toJson(github)}}"
+      - run: echo "${{var.COMPANY_NAME}}"
