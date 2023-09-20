@@ -21,8 +21,8 @@ jobs:
 
       - name: greet
         run: |
-            echo "name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}" 
-            echo "greet='name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}'" >> $GITHUB_OUTPUT  
+            echo "name is ${{steps.out.outputs.name}} and his age is ${{steps.out.outputs.age}}"  > greet.txt
+            echo "greet=$(cat greet.txt)" >> $GITHUB_OUTPUT  
     output-job:
       runs-on: self-hosted
       needs: [input-job]
