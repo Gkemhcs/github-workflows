@@ -12,14 +12,15 @@ jobs:
       - name: checkout repo 
         uses: actions/checkout@v2
       - name: cd 
-        run: cd nodejs
+        run: |
+            cd nodejs
       - name: latest
-        run: ls
+        run: ls && pwd
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
-          cache: npm  
+         
       
       - name: install packages
         run: npm i 
