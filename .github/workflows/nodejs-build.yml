@@ -31,6 +31,8 @@ jobs:
         contents: write
         id-token: write
      runs-on: ubuntu-latest
+     env:
+       PROJECT_ID: argo-gke
      steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -52,7 +54,7 @@ jobs:
       - name: export image 
         run: |
             cd nodejs 
-            docker build -t gcr.io/${{PROJECT_ID}}/gh-actions 
-            docker push gcr.io/${{PROJECT_ID}}/gh-actions            
+            docker build -t gcr.io/${PROJECT_ID}/gh-actions 
+            docker push gcr.io/${PROJECT_ID}/gh-actions            
   
        
