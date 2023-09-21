@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: 16.13.x
          
-      
-      - name: install packages
-        run: npm i 
       - name: run tests
-        run: npm test 
-      - name: clean packages
-        run: npm rm 
+        run: |
+           cd nodejs 
+           ls
+           npm i
+           npm test
+    
       
