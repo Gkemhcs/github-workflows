@@ -27,7 +27,7 @@ jobs:
       run: echo  "always print "
       if: always()
     - name: echo print skipped
-      if: steps.skip.outcome == "skipped"
+      if: steps.skip.outcome == 'skipped'
       run: |
         echo "THE STEPS WERE SKIPPED"
    error-handling:
@@ -46,11 +46,11 @@ jobs:
            exit 1
            echo "step1 completed" 
      - name: job error 1 
-       if: steps.job-1.outcome ==  "failure"
+       if: steps.job-1.outcome ==  'failure'
        run: |
           echo "ERROR DETECTED IN JOB-1"
      - name: job error 1 
-       if: steps.job-2.outcome ==  "failure"
+       if: steps.job-2.outcome ==  'failure'
        run: |
           echo "ERROR DETECTED IN JOB-2"
      
