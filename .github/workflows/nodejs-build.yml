@@ -1,11 +1,10 @@
 name: nodejs-build
-run-name: ndoejs-build
+run-name: nodejs-build
 on: 
    push:
-      branches:
-      - main
+      
       paths:
-      - **.js
+      - "**.js"
 jobs:
    build:
       env:
