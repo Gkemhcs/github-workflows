@@ -5,7 +5,7 @@ jobs:
   secret-1:
     # Add "id-token" with the intended permissions.
     runs-on: ubuntu-latest
- 
+    environment: SECRET-MANAGER
     permissions:
       contents: 'read'
       id-token: 'write'
@@ -26,5 +26,3 @@ jobs:
       run: |
             gcloud config set project argo-gke
             echo "click "| gcloud secrets create secret-1  --data-file -
-
-   
