@@ -11,13 +11,14 @@ jobs:
       
       - name: checkout repo 
         uses: actions/checkout@v2
+      
+      - name: list packages
+        run: ls 
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
           cache: npm  
-      - name: list packages
-        run: ls 
       - name: cd 
         run: cd nodejs
       - name: install packages
