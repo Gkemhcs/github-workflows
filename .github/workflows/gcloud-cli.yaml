@@ -11,16 +11,17 @@ jobs:
       id-token: 'write'
 
     steps:
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        workload_identity_provider:  ${{secrets.WIF_PROVIDER}}
-        service_account: 'secret-manager@argo-gke.iam.gserviceaccount.com'
+    
 
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v1'
       with:
         version: '>= 363.0.0'
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider:  ${{secrets.WIF_PROVIDER}}
+        service_account: 'secret-manager@argo-gke.iam.gserviceaccount.com'
     - name: create secret
       run: |
             gcloud config set project argo-gke
