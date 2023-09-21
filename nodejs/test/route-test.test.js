@@ -1,33 +1,34 @@
-const assert = require('assert');
-const request = require('supertest');
-const app = require('../server'); // Assuming your server.js exports the Express app
+const assert = require('chai').assert;
+const axios = require('axios');
+const server = require('../server'); // Assuming your server.js exports the Express app
+const serverPort = 8080; // Update with your server's port
 
+describe('Express App Routes', ()=> {
+  
+    let serverInstance;
 
+    before(() => {
+      serverInstance = server;
+    });
+  
+    after(() => {
+      serverInstance.close();
+    });
+  
 
-describe('Express App Routes', () => {
-  describe('GET /', () => {
-    it('should return "hello world"', (done) => {
-      request(app)
-        .get('/')
-        .expect(200)
-        .end((err, res) => {
-          if (err) return done(err);
-          assert.strictEqual(res.text, 'hello world');
-          done();
-        });
+  describe('GET /', ()=>{
+    it('should return "hello world"', async () => {
+      const response = await axios.get(`http://localhost:${serverPort}/`);
+      assert.strictEqual(response.status, 200);
+      assert.strictEqual(response.data, 'hello world');
     });
   });
 
-  describe('GET /health', () => {
-    it('should return "i am healthy"', (done) => {
-      request(app)
-        .get('/health')
-        .expect(200)
-        .end((err, res) => {
-          if (err) return done(err);
-          assert.strictEqual(res.text, 'i am healthy');
-          done();
-        });
+  describe('GET /health', ()=> {
+    it('should return "i am healthy"', async () => {
+      const response = await axios.get(`http://localhost:${serverPort}/health`);
+      assert.strictEqual(response.status, 200);
+      assert.strictEqual(response.data, 'i am healthy');
     });
   });
 });

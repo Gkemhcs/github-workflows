@@ -7,7 +7,8 @@ app.get("/health",(req,res)=>{
     res.send("i am healthy")
 })
 
-module.exports=app
-app.listen(8080,()=>{
+
+const server=app.listen(8080,()=>{
     console.log("server started")
 })
+module.exports=server

@@ -1,0 +1,29 @@
+name: nodejs-build
+run-name: ndoejs-build
+on: 
+   push:
+      branches:
+      - main
+      paths:
+      - **.js
+jobs:
+   build:
+      env:
+         NODE_VERSION: 1.0.0
+      runs-on: self-hosted
+      steps:
+      - name: echo NODE NODE_VERSION
+        run: echo "NODE_VERSION IS ${NODE_VERSION}"
+      - name: checkout repo 
+        uses: actions/checkout@v2
+      - name: list packages
+        run: ls 
+      - name: cd 
+        run: cd nodejs 
+      - name: install packages
+        run: npm i 
+      - name: run tests
+        run: npm test 
+      - name: clean packages
+        run: npm rm 
+      
