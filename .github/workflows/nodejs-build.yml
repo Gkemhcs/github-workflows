@@ -6,15 +6,20 @@ on:
 jobs:
    build:
       
-      runs-on: self-hosted
+      runs-on: ubuntu-latest
       steps:
-    
+      
       - name: checkout repo 
         uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm  
       - name: list packages
         run: ls 
       - name: cd 
-        run: cd nodejs 
+        run: cd nodejs
       - name: install packages
         run: npm i 
       - name: run tests
