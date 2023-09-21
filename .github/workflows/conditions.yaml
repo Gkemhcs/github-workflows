@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
     - name: runs if actor is not gkemhcs
+      id: skipped
       run: |
          echo "GKEMHCS IS INITIATED"
       if:  github.actor != 'Gkemhcs'
@@ -27,7 +28,7 @@ jobs:
       run: echo  "always print "
       if: always()
     - name: echo print skipped
-      if: steps.skip.outcome == 'cancelled'
+      if: steps.skipped.outcome == 'cancelled'
       run: |
         echo "THE STEPS WERE SKIPPED"
    error-handling:
