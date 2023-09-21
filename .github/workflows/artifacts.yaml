@@ -11,7 +11,7 @@ jobs:
         with:
            name: nodejs
            path: |
-              nodejs-*
+              nodejs*
               script.sh
    artifact-download:
      runs-on: ubuntu-latest
