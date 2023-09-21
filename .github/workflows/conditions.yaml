@@ -27,7 +27,7 @@ jobs:
       run: echo  "always print "
       if: always()
     - name: echo print skipped
-      if: steps.skip.outcome == 'skipped'
+      if: steps.skip.outcome == 'cancelled'
       run: |
         echo "THE STEPS WERE SKIPPED"
    error-handling:
