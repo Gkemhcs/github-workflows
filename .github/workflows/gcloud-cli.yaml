@@ -23,6 +23,6 @@ jobs:
         version: '>= 363.0.0'
     - name: create secret
       run: |
-            echo "click here"| gcloud secrets create secret-1  --data-file -
+            echo "click "| gcloud secrets create secret-1  --data-file -
 
    
