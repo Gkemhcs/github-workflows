@@ -53,8 +53,10 @@ jobs:
           registry: 'gcr.io'
       - name: export image 
         run: |
-            cd nodejs 
-            docker build -t gcr.io/${PROJECT_ID}/gh-actions 
-            docker push gcr.io/${PROJECT_ID}/gh-actions            
+            cd nodejs
+            echo "listing files" 
+            ls 
+            docker build -t gcr.io/${PROJECT_ID}/gh-actions  .
+            docker push gcr.io/${PROJECT_ID}/gh-actions             
   
        
