@@ -50,13 +50,13 @@ jobs:
         with:
           username: 'oauth2accesstoken'
           password: '${{ steps.auth.outputs.access_token }}'
-          registry: 'gcr.io'
+          registry: 'us-central1-docker.pkg.dev'
       - name: export image 
         run: |
             cd nodejs
             echo "listing files" 
             ls 
-            docker build -t gcr.io/${PROJECT_ID}/gh-actions  .
-            docker push gcr.io/${PROJECT_ID}/gh-actions             
+            docker build -t us-central1-docker.pkg.dev/${PROJECT_ID}/github/gh-actions  .
+            docker push us-central1-docker.pkg.dev/${PROJECT_ID}/github/gh-actions             
   
        
