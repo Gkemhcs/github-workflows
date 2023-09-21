@@ -1,8 +1,6 @@
 name: nodejs
-on: 
-   push:
-      paths:
-      - "**.js"
+on: [push]
+  
 jobs:
    build:
       
@@ -28,4 +26,33 @@ jobs:
            npm i
            npm test
     
-      
+   build-image:
+     permissions:
+        contents: write
+        id-token: write
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v0'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}' #
+      - name: Docker Auth
+        id: docker-auth
+        uses: 'docker/login-action@v1'
+        with:
+          username: 'oauth2accesstoken'
+          password: '${{ steps.auth.outputs.access_token }}'
+          registry: 'gcr.io'
+      - name: export image 
+        run: |
+            cd nodejs 
+            docker build -t gcr.io/${{PROJECT_ID}}/gh-actions 
+            docker push gcr.io/${{PROJECT_ID}}/gh-actions            
+  
+       
