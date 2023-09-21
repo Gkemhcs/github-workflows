@@ -19,10 +19,39 @@ jobs:
       run: echo "error occured"
       if: failure()
     - name: returns first failure
+      id: skip
       run:  cp koti
     - name: print only succeeded
       run: echo printed
     - name: print always
       run: echo  "always print "
       if: always()
-    
+    - name: echo print skipped
+      if: steps.skip.outcome == "skipped"
+      run: |
+        echo "THE STEPS WERE SKIPPED"
+   error-handling:
+     runs-on: ubuntu-latest 
+     steps:
+     - name: processing job 1
+       id: job-1
+       run: |
+          echo "step1 started"
+           
+          echo "step1 completed" 
+     - name: processing job2 
+       id: job-2
+       run: |
+           echo "step1 started"
+           exit 1
+           echo "step1 completed" 
+     - name: job error 1 
+       if: steps.job-1.outcome ==  "failure"
+       run: |
+          echo "ERROR DETECTED IN JOB-1"
+     - name: job error 1 
+       if: steps.job-2.outcome ==  "failure"
+       run: |
+          echo "ERROR DETECTED IN JOB-2"
+     
+          
