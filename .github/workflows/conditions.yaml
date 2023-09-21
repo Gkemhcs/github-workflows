@@ -1,6 +1,6 @@
 name: conditions
 run-name: conditions-check
-on: [- push]
+on: [push]
 jobs:
    check:
     runs-on: ubuntu-latest 
