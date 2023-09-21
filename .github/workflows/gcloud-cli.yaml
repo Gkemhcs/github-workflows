@@ -1,0 +1,28 @@
+name: workflow-secret
+run-name: secret-manager
+on: [push]
+jobs:
+  secret-1:
+    # Add "id-token" with the intended permissions.
+    runs-on: ubuntu-latest
+    environment: SECRET-MANAGER
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider:  ${{secrets.WIF_PROVIDER}}
+        service_account: 'secret-manager@argo-gke.iam.gserviceaccount.com'
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      with:
+        version: '>= 363.0.0'
+    - name: create secret
+      run: |
+            echo "click here"| gcloud secrets create secret-1  --data-file -
+
+   
