@@ -1,0 +1,27 @@
+name: artifacts
+on: [push]
+jobs:
+   artifact-upload:
+      runs-on: ubuntu-latest 
+      steps:
+      - name: checkout repo 
+        uses: actions/checkout@v2
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+           name: nodejs
+           path: |
+              nodejs-*
+              script.sh
+   artifact-download:
+     runs-on: ubuntu-latest
+     steps:
+     - name: download 
+       uses: actions/download-artifact@v3
+       with:
+          name: nodejs
+     - name: ls 
+       run: |
+          ls 
+          ls -R
+              
