@@ -1,0 +1,15 @@
+name: conditions
+run-name: conditions-check
+jobs:
+   check:
+    runs-on: ubuntu-latest 
+    steps:
+    - name: runs if actor is not gkemhcs
+      run: |
+         echo "GKEMHCS IS INITIATED"
+      if:   ${{github.actor!="Gkemhcs"}}
+    - name: runs if
+      run: |
+          echo "GKEMHCS ISN'T INITIATED"
+      if: ${{github.actor=="Gkemhcs"}}
+          
