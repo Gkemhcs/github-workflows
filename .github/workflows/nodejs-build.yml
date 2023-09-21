@@ -1,8 +1,6 @@
-name: nodejs-build
-run-name: nodejs-build
+name: nodejs
 on: 
    push:
-      
       paths:
       - "**.js"
 jobs:
