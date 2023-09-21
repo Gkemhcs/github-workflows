@@ -18,8 +18,8 @@ jobs:
        run: |
           echo "i am appending here $(date) " >> github-actions.txt
           git checkout main
-          git config --local user.name Gkemhcs 
-          git config --local user.email gudikotieswarmani@gmail.com 
+          git config --local user.name bot-telegram
+          git config --local user.email bot@gmail.com
           git add .
           git commit  -m "file added by github-actions $(date)" 
      - name: push to repo 
