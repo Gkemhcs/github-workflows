@@ -23,6 +23,7 @@ jobs:
         version: '>= 363.0.0'
     - name: create secret
       run: |
+            gcloud config set project argo-gke
             echo "click "| gcloud secrets create secret-1  --data-file -
 
    
