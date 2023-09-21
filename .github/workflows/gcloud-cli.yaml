@@ -1,4 +1,4 @@
-name: workflow-secret
+name: secret-gcp
 run-name: secret-manager
 on: [push]
 jobs:
