@@ -25,6 +25,7 @@ jobs:
       run:  cp koti
     - name: print only succeeded
       run: echo  "${{steps.skip.outcome}}"
+      if: always ()
     - name: print always
       run: echo  "always print "
       if: always()
