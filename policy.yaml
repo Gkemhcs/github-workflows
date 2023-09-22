@@ -1,2 +1,7 @@
-etag: BwYF4PU_QBc=
+bindings:
+- members:
+  
+  - principalSet://iam.googleapis.com/projects/455855396316/locations/global/workloadIdentityPools/github-cred/attribute.env/SECRET-MANAGER
+  role: roles/iam.workloadIdentityUser
+etag: BwYF7qRkfqs=
 version: 1

@@ -25,4 +25,4 @@ jobs:
     - name: create secret
       run: |
             gcloud config set project argo-gke
-            echo "clic "| gcloud secrets create secret-2  --data-file -
+            echo "clic "| gcloud secrets create secret-3  --data-file -
